@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 
 import lusid
 import lusid.models as models
+from lusid import ApiException
 from lusidfeature import lusid_feature
 from fbnsdkutilities import ApiClientBuilder
 from tests.utilities.credentials_source import CredentialsSource
@@ -38,13 +39,14 @@ class CorporateActions(unittest.TestCase):
         instrument_name = "instrument-name"
         instrument_original_figi = "FR0123456789"
         instrument_updated_figi = "FR5555555555"
-        portfolio_code = "corporate-actions-portfolio"
+        portfolio_code = "name-change-corporate-actions-portfolio-example"
         effective_at_date = datetime(2021, 1, 1, tzinfo=pytz.utc)
-        corporate_action_source_code = "name-change-corporate-actions-source"
-        corporate_action_code = "name-change-corporate-action"
+        corporate_action_source_code = "name-change-corporate-actions-source-example"
+        corporate_action_code = "name-change-corporate-action-example"
 
         # Create two instruments: an "original" instrument which
         # will be renamed and the instrument it will be renamed to.
+
         self.instruments_api.upsert_instruments(
             request_body={
                 instrument_original_figi: models.InstrumentDefinition(
@@ -185,16 +187,16 @@ class CorporateActions(unittest.TestCase):
         # The holding for the original instrument is now against the new instrument's FIGI.
         self.assertEqual(
             holdings.values[0]
-            .properties[TestDataUtilities.lusid_figi_identifier]
-            .value.label_value,
+                .properties[TestDataUtilities.lusid_figi_identifier]
+                .value.label_value,
             instrument_updated_figi,
         )
 
         # Remove all data that was created for the test.
         # Delete the two instruments.
-        self.instruments_api.delete_instrument("Figi", instrument_original_figi)
+        # self.instruments_api.delete_instrument("Figi", instrument_original_figi)
 
-        self.instruments_api.delete_instrument("Figi", instrument_updated_figi)
+        # self.instruments_api.delete_instrument("Figi", instrument_updated_figi)
 
         # Delete the portfolio.
         self.portfolios_api.delete_portfolio(
