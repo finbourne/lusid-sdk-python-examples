@@ -10,11 +10,9 @@ from lusidumbrella import ApiClientFactory
 
 from tests.utilities import CredentialsSource
 
-import datetime
-
 
 class TestDataUtilities:
-    tutorials_scope = f"Testdemo_{str(datetime.datetime.now())}"
+    tutorials_scope = f"Testdemo_{datetime.now().strftime('%Y-%m-%d_%H_%M_%S')}"
     market_data_scope = "FinbourneMarketData"
 
     lusid_cash_identifier = "Instrument/default/Currency"
