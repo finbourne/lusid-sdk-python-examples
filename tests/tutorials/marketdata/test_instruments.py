@@ -156,6 +156,14 @@ class Instruments(unittest.TestCase):
         identifier_type = "Figi"
         identifier = "BBG000FD8G46"
 
+        self.property_definitions_api.create_property_definition(
+            create_property_definition_request=lusid.models.CreatePropertyDefinitionRequest(
+                domain='Instrument',
+                scope=TestDataUtilities.tutorials_scope,
+                code="CustomSector"
+            )
+        )
+
         # update the instrument
         self.instruments_api.upsert_instruments_properties(upsert_instrument_property_request=[
             models.UpsertInstrumentPropertyRequest(
