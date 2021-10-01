@@ -1,3 +1,4 @@
+import json
 import unittest
 import uuid
 import pytz
@@ -65,15 +66,19 @@ class CorporateActions(unittest.TestCase):
         )
 
         # Create a transaction portfolio to hold the original instrument.
-        self.transaction_portfolios_api.create_portfolio(
-            scope=TestDataUtilities.tutorials_scope,
-            create_transaction_portfolio_request=models.CreateTransactionPortfolioRequest(
-                code=portfolio_code,
-                display_name=portfolio_code,
-                base_currency="GBP",
-                created=effective_at_date,
-            ),
-        )
+        try:
+            self.transaction_portfolios_api.create_portfolio(
+                scope=TestDataUtilities.tutorials_scope,
+                create_transaction_portfolio_request=models.CreateTransactionPortfolioRequest(
+                    code=portfolio_code,
+                    display_name=portfolio_code,
+                    base_currency="GBP",
+                    created=effective_at_date,
+                ),
+            )
+        except lusid.ApiException as e:
+            if json.loads(e.body)["name"] == "PortfolioWithIdAlreadyExists":
+                pass  # ignore if the property definition exists
 
         # Add a transaction for the original instrument.
         self.transaction_portfolios_api.upsert_transactions(
