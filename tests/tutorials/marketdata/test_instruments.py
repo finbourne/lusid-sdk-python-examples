@@ -160,7 +160,9 @@ class Instruments(unittest.TestCase):
             create_property_definition_request=lusid.models.CreatePropertyDefinitionRequest(
                 domain='Instrument',
                 scope=TestDataUtilities.tutorials_scope,
-                code="CustomSector"
+                code="CustomSector",
+                display_name="Custom Sector",
+                data_type_id=lusid.ResourceId(scope="system", code="string"),
             )
         )
 
