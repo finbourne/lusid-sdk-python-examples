@@ -12,7 +12,7 @@ from tests.utilities import CredentialsSource
 
 
 class TestDataUtilities:
-    tutorials_scope = "Testdemo"
+    tutorials_scope = f"Testdemo_{uuid.uuid4()}"
     market_data_scope = "FinbourneMarketData"
 
     lusid_cash_identifier = "Instrument/default/Currency"
