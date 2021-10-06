@@ -1,3 +1,4 @@
+import uuid
 from collections import namedtuple
 
 import lusid
@@ -8,11 +9,11 @@ class InstrumentLoader:
     __InstrumentSpec = namedtuple("InstrumentSpec", ["Figi", "Name"])
 
     __instruments = [
-        __InstrumentSpec("BBG000FD8G46", "HISCOX LTD"),
-        __InstrumentSpec("BBG000DW76R4", "ITV PLC"),
-        __InstrumentSpec("BBG000PQKVN8", "MONDI PLC"),
-        __InstrumentSpec("BBG000BDWPY0", "NEXT PLC"),
-        __InstrumentSpec("BBG000BF46Y8", "TESCO PLC")
+        __InstrumentSpec(f"BBG000FD8G46_{uuid.uuid4()}", "HISCOX LTD"),
+        __InstrumentSpec(f"BBG000DW76R4_{uuid.uuid4()}", "ITV PLC"),
+        __InstrumentSpec(f"BBG000PQKVN8_{uuid.uuid4()}", "MONDI PLC"),
+        __InstrumentSpec(f"BBG000BDWPY0_{uuid.uuid4()}", "NEXT PLC"),
+        __InstrumentSpec(f"BBG000BF46Y8_{uuid.uuid4()}", "TESCO PLC")
     ]
 
     def __init__(self, instruments_api: lusid.InstrumentsApi):
