@@ -8,11 +8,11 @@ class InstrumentLoader:
     __InstrumentSpec = namedtuple("InstrumentSpec", ["Figi", "Name"])
 
     __instruments = [
-        __InstrumentSpec("BBG000HD53D6", "AVIVA PLC"),
-        __InstrumentSpec("BBG004QC8KB1", "NEWS CORP - CLASS A"),
-        __InstrumentSpec("BBG008HKT8K8", "DOMTAR CORP"),
-        __InstrumentSpec("BBG00D87QJR8", "MARKS & SPENCER"),
-        __InstrumentSpec("BBG0007G3X64", "ASDA GROUP PLC")
+        __InstrumentSpec("BBG000FD8G46", "HISCOX LTD"),
+        __InstrumentSpec("BBG000DW76R4", "ITV PLC"),
+        __InstrumentSpec("BBG000PQKVN8", "MONDI PLC"),
+        __InstrumentSpec("BBG000BDWPY0", "NEXT PLC"),
+        __InstrumentSpec("BBG000BF46Y8", "TESCO PLC")
     ]
 
     def __init__(self, instruments_api: lusid.InstrumentsApi):
