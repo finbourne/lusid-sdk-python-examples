@@ -1,6 +1,5 @@
 import json
 import unittest
-import uuid
 
 import lusid
 import lusid.models as models
@@ -45,50 +44,44 @@ class Instruments(unittest.TestCase):
 
     @lusid_feature("F41")
     def test_seed_instrument_master(self):
-        hiscox = f"BBG000FD8G46_{uuid.uuid4()}"
-        itv = f"BBG000DW76R4_{uuid.uuid4()}"
-        mondi = f"BBG000PQKVN8_{uuid.uuid4()}"
-        next = f"BBG000BDWPY0_{uuid.uuid4()}"
-        tesco = f"BBG000BF46Y8_{uuid.uuid4()}"
-
         response = self.instruments_api.upsert_instruments(request_body={
 
-            hiscox: models.InstrumentDefinition(
+            "BBG000FD8G46": models.InstrumentDefinition(
                 name="HISCOX LTD",
                 identifiers={
-                    "Figi": models.InstrumentIdValue(value=hiscox),
+                    "Figi": models.InstrumentIdValue(value="BBG000FD8G46"),
                     "ClientInternal": models.InstrumentIdValue(value="internal_id_1")
                 }
             ),
 
-           itv: models.InstrumentDefinition(
+            "BBG000DW76R4": models.InstrumentDefinition(
                 name="ITV PLC",
                 identifiers={
-                    "Figi": models.InstrumentIdValue(value=itv),
+                    "Figi": models.InstrumentIdValue(value="BBG000DW76R4"),
                     "ClientInternal": models.InstrumentIdValue(value="internal_id_2")
                 }
             ),
 
-            mondi: models.InstrumentDefinition(
+            "BBG000PQKVN8": models.InstrumentDefinition(
                 name="MONDI PLC",
                 identifiers={
-                    "Figi": models.InstrumentIdValue(value=mondi),
+                    "Figi": models.InstrumentIdValue(value="BBG000PQKVN8"),
                     "ClientInternal": models.InstrumentIdValue(value="internal_id_3")
                 }
             ),
 
-            next: models.InstrumentDefinition(
+            "BBG000BDWPY0": models.InstrumentDefinition(
                 name="NEXT PLC",
                 identifiers={
-                    "Figi": models.InstrumentIdValue(value=next),
+                    "Figi": models.InstrumentIdValue(value="BBG000BDWPY0"),
                     "ClientInternal": models.InstrumentIdValue(value="internal_id_4")
                 }
             ),
 
-            tesco: models.InstrumentDefinition(
+            "BBG000BF46Y8": models.InstrumentDefinition(
                 name="TESCO PLC",
                 identifiers={
-                    "Figi": models.InstrumentIdValue(value=tesco),
+                    "Figi": models.InstrumentIdValue(value="BBG000BF46Y8"),
                     "ClientInternal": models.InstrumentIdValue(value="internal_id_5")
                 }
             )
