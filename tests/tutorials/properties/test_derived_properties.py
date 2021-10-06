@@ -95,10 +95,10 @@ class DerivedPropertyTests(unittest.TestCase):
         self.create_ratings_property("Fitch", "Moodys")
 
         # create instrument property edge cases and upsert (using arbitrary numeric ratings)
-        self.upsert_ratings_property("BBG000FD8G46", fitch_value=10, moodys_value=5)
-        self.upsert_ratings_property("BBG000DW76R4")
-        self.upsert_ratings_property("BBG000PQKVN8", moodys_value=5)
-        self.upsert_ratings_property("BBG000BDWPY0", fitch_value=10)
+        self.upsert_ratings_property("BBG000HD53D6", fitch_value=10, moodys_value=5)
+        self.upsert_ratings_property("BBG004QC8KB1")
+        self.upsert_ratings_property("BBG008HKT8K8", moodys_value=5)
+        self.upsert_ratings_property("BBG00D87QJR8", fitch_value=10)
 
         # create derived property using the 'Coalesce' derivation formula
         code = "DerivedRating"
@@ -126,19 +126,19 @@ class DerivedPropertyTests(unittest.TestCase):
                 )
 
         # test case for derived property with both ratings
-        moodys_then_fitch = self.get_instruments_with_derived_prop("BBG000FD8G46")
+        moodys_then_fitch = self.get_instruments_with_derived_prop("BBG000HD53D6")
         self.assertEqual(moodys_then_fitch, 5.0)
 
         # test case for derived property with no ratings
-        no_ratings = self.get_instruments_with_derived_prop("BBG000DW76R4")
+        no_ratings = self.get_instruments_with_derived_prop("BBG004QC8KB1")
         self.assertEqual(no_ratings, 0.0)
 
         # # test case for derived property with fitch only
-        fitch_only = self.get_instruments_with_derived_prop("BBG000BDWPY0")
+        fitch_only = self.get_instruments_with_derived_prop("BBG00D87QJR8")
         self.assertEqual(fitch_only, 10.0)
 
         # test case for derived property with moodys only
-        moodys_only = self.get_instruments_with_derived_prop("BBG000PQKVN8")
+        moodys_only = self.get_instruments_with_derived_prop("BBG008HKT8K8")
         self.assertEqual(moodys_only, 5.0)
 
 
