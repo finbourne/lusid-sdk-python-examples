@@ -100,7 +100,7 @@ class Instruments(unittest.TestCase):
                 name="REDDE PLC",
                 identifiers={
                     "Figi": models.InstrumentIdValue(value=figi),
-                    "ClientInternal": models.InstrumentIdValue(value="internal_id_1")
+                    "ClientInternal": models.InstrumentIdValue(value="internal_id_1_example2")
                 }
             )
         })
