@@ -46,11 +46,11 @@ class Instruments(unittest.TestCase):
     def test_seed_instrument_master(self):
         response = self.instruments_api.upsert_instruments(request_body={
 
-            "BBG000FSK0Y1": models.InstrumentDefinition(
-                name="REDDE PLC",
+            "BBG000PG14G9": models.InstrumentDefinition(
+                name="YOUGOV PLC",
                 identifiers={
-                    "Figi": models.InstrumentIdValue(value="BBG000FSK0Y1"),
-                    "ClientInternal": models.InstrumentIdValue(value="internal_id_1_example2")
+                    "Figi": models.InstrumentIdValue(value="BBG000PG14G9"),
+                    "ClientInternal": models.InstrumentIdValue(value="internal_id_1_example2a")
                 }
             ),
 
@@ -92,15 +92,15 @@ class Instruments(unittest.TestCase):
     @lusid_feature("F22")
     def test_lookup_instrument_by_unique_id(self):
 
-        figi = "BBG000FSK0Y1"
+        figi = "BBG000PG14G9"
 
         # set up the instrument
         response = self.instruments_api.upsert_instruments(request_body={
             figi: models.InstrumentDefinition(
-                name="REDDE PLC",
+                name="YOUGOV PLC",
                 identifiers={
                     "Figi": models.InstrumentIdValue(value=figi),
-                    "ClientInternal": models.InstrumentIdValue(value="internal_id_1_example2")
+                    "ClientInternal": models.InstrumentIdValue(value="internal_id_1_example2a")
                 }
             )
         })
@@ -117,10 +117,10 @@ class Instruments(unittest.TestCase):
         self.assertTrue(figi in looked_up_instruments.values, msg=f"cannot find {figi}")
 
         instrument = looked_up_instruments.values[figi]
-        self.assertTrue(instrument.name, "REDDE PLC")
+        self.assertTrue(instrument.name, "YOUGOV PLC")
 
         property = next(filter(lambda i: i.key == "Instrument/default/ClientInternal", instrument.properties), None)
-        self.assertTrue(property.value, "internal_id_1_example2")
+        self.assertTrue(property.value, "internal_id_1_example2a")
 
     @lusid_feature("F23")
     def test_list_available_identifiers(self):
@@ -141,7 +141,7 @@ class Instruments(unittest.TestCase):
     @lusid_feature("F25")
     def test_list_instruments_by_identifier_type(self):
 
-        figis = ["BBG000FSK0Y1", "BBG003FZ2QK7", "BBG0058ZH3C4"]
+        figis = ["BBG000PG14G9", "BBG003FZ2QK7", "BBG0058ZH3C4"]
 
         # get a set of instruments querying by FIGIs
         instruments = self.instruments_api.get_instruments(identifier_type="Figi", request_body=figis)
@@ -155,7 +155,7 @@ class Instruments(unittest.TestCase):
         property_value = models.PropertyValue(label_value="Insurance")
         property_key = f"Instrument/{TestDataUtilities.tutorials_scope}/CustomSector"
         identifier_type = "Figi"
-        identifier = "BBG000FSK0Y1"
+        identifier = "BBG000PG14G9"
 
         try:
             self.property_definitions_api.create_property_definition(

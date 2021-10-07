@@ -8,7 +8,7 @@ class InstrumentLoader:
     __InstrumentSpec = namedtuple("InstrumentSpec", ["Figi", "Name"])
 
     __instruments = [
-        __InstrumentSpec("BBG000FSK0Y1", "REDDE PLC"),
+        __InstrumentSpec("BBG000PG14G9", "YOUGOV PLC"),
         __InstrumentSpec("BBG003FZ2QK7", "SYNCONA LTD"),
         __InstrumentSpec("BBG0058ZH3C4", "RENEWABLES INFRASTRUCTURE GR"),
         __InstrumentSpec("BBG000GRLN26", "SPECTRIS PLC"),

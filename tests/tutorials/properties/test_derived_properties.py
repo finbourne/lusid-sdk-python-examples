@@ -95,7 +95,7 @@ class DerivedPropertyTests(unittest.TestCase):
         self.create_ratings_property("Fitch", "Moodys")
 
         # create instrument property edge cases and upsert (using arbitrary numeric ratings)
-        self.upsert_ratings_property("BBG000FSK0Y1", fitch_value=10, moodys_value=5)
+        self.upsert_ratings_property("BBG000PG14G9", fitch_value=10, moodys_value=5)
         self.upsert_ratings_property("BBG003FZ2QK7")
         self.upsert_ratings_property("BBG0058ZH3C4", moodys_value=5)
         self.upsert_ratings_property("BBG000GRLN26", fitch_value=10)
@@ -126,7 +126,7 @@ class DerivedPropertyTests(unittest.TestCase):
                 )
 
         # test case for derived property with both ratings
-        moodys_then_fitch = self.get_instruments_with_derived_prop("BBG000FSK0Y1")
+        moodys_then_fitch = self.get_instruments_with_derived_prop("BBG000PG14G9")
         self.assertEqual(moodys_then_fitch, 5.0)
 
         # test case for derived property with no ratings
