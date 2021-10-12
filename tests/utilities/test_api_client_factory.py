@@ -2,7 +2,7 @@ import unittest
 
 
 from lusid import InstrumentsApi
-from lusidumbrella import ApiClientFactory
+from lusid_factory import ApiClientFactory
 
 from tests.utilities import CredentialsSource
 

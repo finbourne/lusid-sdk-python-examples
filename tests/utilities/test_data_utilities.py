@@ -6,7 +6,7 @@ import unittest
 
 import lusid
 import lusid.models as models
-from lusidumbrella import ApiClientFactory
+from lusid_factory import ApiClientFactory
 
 from tests.utilities import CredentialsSource
 
