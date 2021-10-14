@@ -8,7 +8,6 @@ import lusid
 import lusid.models as models
 from lusidfeature import lusid_feature
 
-from fbnsdkutilities import ApiClientBuilder
 from tests.utilities.instrument_loader import InstrumentLoader
 from tests.utilities.test_data_utilities import TestDataUtilities
 from tests.utilities.credentials_source import CredentialsSource
