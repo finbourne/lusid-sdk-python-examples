@@ -32,7 +32,7 @@ class TestDataUtilities:
         if not cls._api_client_factory:
             with cls._lock:
                 if not cls._api_client_factory:
-                    cls._api_client_factory = ApiClientFactory(api_secrets_filename=CredentialsSource.secrets_path())
+                    cls._api_client_factory = ApiClientFactory(lusid, api_secrets_filename=CredentialsSource.secrets_path())
         return cls._api_client_factory
 
     def create_transaction_portfolio(self, scope):
