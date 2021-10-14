@@ -1,6 +1,6 @@
 import unittest
 
-
+import lusid
 from lusid import InstrumentsApi
 from fbnsdkutilities import ApiClientFactory
 
@@ -11,6 +11,7 @@ class TestApiFactory(unittest.TestCase):
 
     def test_get_api_with_info(self):
         factory = ApiClientFactory(
+            lusid,
             api_secrets_filename=CredentialsSource.secrets_path()
         )
         api = factory.build(InstrumentsApi)
